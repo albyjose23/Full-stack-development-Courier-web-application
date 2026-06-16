@@ -32,18 +32,14 @@
     </section>
 
     <section id="cars" class="cars-section">
-        <div class="section-title">
-            <h2>Explore Our Fleet</h2>
-            <p>Select from our pristine, high-end vehicle choices customized for any occasion.</p>
-        </div>
-        
+        <h2>Explore Our Fleet</h2>
         <div class="cars-grid">
             <div class="car-card">
                 <img src="fortuner.png" alt="Toyota">
                 <div class="car-details">
                     <h3>Toyota Fortuner</h3>
                     <p class="price">5000/ Day</p>
-                    <p class="desc">Powerful SUV for the offroaders</p>
+                    <p>Powerful SUV for the offroaders</p>
                 </div>
             </div>
             
@@ -52,7 +48,7 @@
                 <div class="car-details">
                     <h3>Hyundai Creta</h3>
                     <p class="price">4000/ Day</p>
-                    <p class="desc">Stylish and comfortable SUV</p>
+                    <p>Stylish and comfortable SUV</p>
                 </div>
             </div>
             
@@ -61,54 +57,45 @@
                 <div class="car-details">
                     <h3>Honda City</h3>
                     <p class="price">3000/ Day</p>
-                    <p class="desc">Ideal sedan for city rides</p>
+                    <p>Ideal sedan for city rides</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <section id="about" class="content-wrapper">
         <h2>About DriveEase</h2>
-        <p class="subtitle">Your reliable self-drive car rental companion.</p>
-        <p>Welcome to DriveEase. We make booking rental cars effortless, direct, and incredibly affordable. Founded with a vision to streamline your travel experiences, we provide flexible options tailored to meet daily commuter needs or luxury family road trips.</p>
+        <p>Welcome to DriveEase. We make booking rental cars effortless, direct, and incredibly affordable.</p>
         <h3>Our Commitments</h3>
-        <ul class="commitments-list">
-            <li><strong>No Hidden Costs:</strong> Transparent pricing structures with zero hidden documentation loop expenses.</li>
-            <li><strong>Premium Fleet Safety:</strong> Every single vehicle is comprehensively checked, verified, and thoroughly cleaned before your keys are handed over.</li>
-            <li><strong>24/7 Roadside Assistance:</strong> Travel with complete peace of mind knowing our helpline is always available.</li>
+        <ul>
+            <li><strong>No Hidden Costs:</strong> Transparent pricing structures.</li>
+            <li><strong>Premium Fleet Safety:</strong> Clean and safe cars.</li>
+            <li><strong>24/7 Roadside Assistance:</strong> Help is always available.</li>
         </ul>
     </section>
 
-    <div class="section-divider"></div>
-
     <section id="contact" class="content-wrapper">
         <h2>Contact Us</h2>
-        <p class="subtitle">Have questions? Drop us a message, and our team will get right back to you.</p>
-        <form onsubmit="alert('Message sent successfully!'); return false;">
+        <form onsubmit="showModal(); return false;">
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter your full name" required>
+                <input type="text" required>
             </div>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="Enter your email address" required>
+                <input type="email" required>
             </div>
             <div class="form-group">
                 <label>Message</label>
-                <textarea rows="5" placeholder="Write your message here..." required></textarea>
+                <textarea rows="4" required></textarea>
             </div>
             <button type="submit" class="btn-submit">Send Message</button>
         </form>
     </section>
 
-    <div class="section-divider"></div>
-
     <section id="book" class="content-wrapper">
         <h2>Book Your Ride</h2>
-        <p class="subtitle">Fill out the quick secure application below to instantly lock in your vehicle.</p>
-        <form onsubmit="alert('Booking confirmed!'); return false;">
+        <form onsubmit="showModal(); return false;">
             <div class="form-group">
                 <label>Select Car</label>
                 <select required>
@@ -126,13 +113,43 @@
                 <label>Return Date</label>
                 <input type="date" required>
             </div>
+            <div class="form-group">
+                <label>HTML5 API Location</label>
+                <button type="button" onclick="getLocation()">Detect My Location</button>
+                <p id="location-text"></p>
+            </div>
             <button type="submit" class="btn-submit">Confirm Booking</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2026 DriveEase Rent-A-Car. All rights reserved.</p>
+        <p>&copy; 2026 DriveEase Rent-A-Car.</p>
     </footer>
+
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Success!</h3>
+            <p>Your request has been processed successfully.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function getLocation() {
+            const locText = document.getElementById("location-text");
+            if (navigator.geolocation) {
+                locText.innerText = "Locating...";
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => { locText.innerText = "Verified! Lat: " + pos.coords.latitude.toFixed(2) + ", Lon: " + pos.coords.longitude.toFixed(2); },
+                    () => { locText.innerText = "Permission denied."; }
+                );
+            } else {
+                locText.innerText = "Not supported.";
+            }
+        }
+        function showModal() { document.getElementById("successModal").style.display = "flex"; }
+        function closeModal() { document.getElementById("successModal").style.display = "none"; }
+    </script>
 
 </body>
 </html>

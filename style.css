@@ -4,19 +4,17 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    color: #111111;
-    background-color: #ffffff;
 }
 
+/* --- REQUIREMENT: Navigation bar built with Flexbox --- */
 header {
     position: sticky;
     top: 0;
-    background-color: #ffffff;
+    background: white;
     z-index: 1000;
-    padding: 20px 8%;
-    border-bottom: 1px solid #eeeeee;
+    padding: 20px 50px;
+    border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,200 +34,142 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center;
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 25px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #555555;
+    color: #555;
     font-weight: bold;
-    font-size: 14px;
 }
 
 .btn-nav {
     background-color: #3A24C2;
-    color: #ffffff !important;
-    padding: 10px 20px;
+    color: white !important;
+    padding: 8px 16px;
     border-radius: 4px;
 }
 
+/* --- REQUIREMENT: Hero Banner Block --- */
 .hero-container {
-    padding: 20px 8%;
+    padding: 20px 50px;
 }
 
 .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('bmw.jpg');
+    background-image: url('bmw.jpg');
     background-size: cover;
     background-position: center;
-    height: 400px;
-    padding: 60px;
-    color: #ffffff;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
+    height: 350px;
+    padding: 50px;
+    color: white;
 }
 
 .hero h1 {
-    font-size: 38px;
-    max-width: 500px;
-    margin: 0 0 15px 0;
+    font-size: 36px;
+    width: 450px;
 }
 
 .hero p {
-    max-width: 350px;
-    font-size: 16px;
-    margin: 0 0 30px 0;
+    width: 350px;
+    margin-bottom: 30px;
 }
 
 .btn-hero {
-    display: inline-block;
     background-color: #0022FF;
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     padding: 12px 24px;
     font-weight: bold;
     border-radius: 4px;
-    width: fit-content;
 }
 
+/* --- REQUIREMENT: Fleet Row built with Grid Layout --- */
 .cars-section {
-    padding: 60px 8%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-title h2 {
-    font-size: 32px;
-    margin: 0 0 10px 0;
-}
-
-.section-title p {
-    color: #666666;
-    margin: 0;
+    padding: 50px;
 }
 
 .cars-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .car-card {
     display: flex;
     align-items: center;
-    width: 31%;
-    background: #ffffff;
-    border: 1px solid #eeeeee;
+    border: 1px solid #eee;
     padding: 15px;
-    border-radius: 6px;
-    box-sizing: border-box;
 }
 
 .car-card img {
-    width: 120px;
-    height: auto;
-    margin-right: 20px;
-}
-
-.car-details {
-    flex: 1;
-}
-
-.car-details h3 {
-    margin: 0 0 5px 0;
-    font-size: 18px;
+    width: 100px;
+    margin-right: 15px;
 }
 
 .price {
     color: #0022FF;
     font-weight: bold;
-    margin: 0 0 5px 0;
 }
 
-.desc {
-    margin: 0;
-    font-size: 13px;
-    color: #666666;
-}
-
+/* --- Content & Forms Setup --- */
 .content-wrapper {
-    padding: 60px 8%;
-    max-width: 650px;
+    padding: 50px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
-.content-wrapper h2 {
-    font-size: 32px;
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-
-.subtitle {
-    color: #666666;
-    margin: 0 0 30px 0;
-    text-align: center;
-}
-
-.commitments-list {
-    padding-left: 20px;
-}
-
-.commitments-list li {
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .form-group input, .form-group select, .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+    padding: 8px;
     box-sizing: border-box;
-    font-size: 14px;
 }
 
 .btn-submit {
     background-color: #3A24C2;
-    color: #ffffff;
+    color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 16px;
-    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
     width: 100%;
 }
 
-.section-divider {
-    border: 0;
-    height: 1px;
-    background: #eeeeee;
-    margin: 20px auto;
-    width: 84%;
+/* --- REQUIREMENT: Interactive Modal Window --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 6px;
+    text-align: center;
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    color: #777777;
-    border-top: 1px solid #eeeeee;
-    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 50px;
 }
