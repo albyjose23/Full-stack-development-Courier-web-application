@@ -142,7 +142,6 @@ nav ul li a {
     width: 100%;
 }
 
-/* BASIC STUDENT-LEVEL CARD DISPLAY BLOCK */
 .user-card {
     background: #fdfdfd;
     border: 2px solid #3A24C2;
@@ -177,8 +176,6 @@ footer {
     border-top: 1px solid #eee;
     margin-top: 50px;
 }
-
-/* SELF LEARNING: Pure standard layout responsiveness query */
 @media screen and (max-width: 600px) {
     header {
         display: block;
