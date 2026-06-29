@@ -7,7 +7,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* --- REQUIREMENT: Navigation bar built with Flexbox --- */
 header {
     position: sticky;
     top: 0;
@@ -53,7 +52,6 @@ nav ul li a {
     border-radius: 4px;
 }
 
-/* --- REQUIREMENT: Hero Banner Block --- */
 .hero-container {
     padding: 20px 50px;
 }
@@ -86,7 +84,6 @@ nav ul li a {
     border-radius: 4px;
 }
 
-/* --- REQUIREMENT: Fleet Row built with Grid Layout --- */
 .cars-section {
     padding: 50px;
 }
@@ -114,7 +111,6 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* --- Content & Forms Setup --- */
 .content-wrapper {
     padding: 50px;
     max-width: 600px;
@@ -146,7 +142,15 @@ nav ul li a {
     width: 100%;
 }
 
-/* --- REQUIREMENT: Interactive Modal Window --- */
+/* BASIC STUDENT-LEVEL CARD DISPLAY BLOCK */
+.user-card {
+    background: #fdfdfd;
+    border: 2px solid #3A24C2;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -172,4 +176,19 @@ footer {
     padding: 20px;
     border-top: 1px solid #eee;
     margin-top: 50px;
+}
+
+/* SELF LEARNING: Pure standard layout responsiveness query */
+@media screen and (max-width: 600px) {
+    header {
+        display: block;
+        text-align: center;
+    }
+    nav ul {
+        justify-content: center;
+        padding-top: 10px;
+    }
+    .cars-grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -15,7 +15,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#cars">Cars</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#register">Register</a></li>
                 <li><a href="#book" class="btn-nav">BOOK NOW</a></li>
             </ul>
         </nav>
@@ -122,6 +122,50 @@
         </form>
     </section>
 
+    <section id="register" class="content-wrapper">
+        <h2>Registration</h2>
+        <form id="myRegForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="uname" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="upass" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="uemail" required>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" id="udob" required>
+            </div>
+            <div class="form-group">
+                <label>City Location</label>
+                <select id="ucity" required>
+                    <option value="">-- Select --</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="chennai">chennai</option>
+                    <option value="KOchi">Kochi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Upload ID Proof</label>
+                <input type="file" id="ufile" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit Registration</button>
+        </form>
+
+        <div id="resultCard" class="user-card" style="display: none;">
+            <h3>User Profile Card</h3>
+            <p>Name: <span id="outName"></span></p>
+            <p>Email: <span id="outEmail"></span></p>
+            <p>DOB: <span id="outDob"></span></p>
+            <p>City: <span id="outCity"></span></p>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 DriveEase Rent-A-Car.</p>
     </footer>
@@ -149,6 +193,36 @@
         }
         function showModal() { document.getElementById("successModal").style.display = "flex"; }
         function closeModal() { document.getElementById("successModal").style.display = "none"; }
+        document.getElementById("myRegForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            var nameVal = document.getElementById("uname").value;
+            var passVal = document.getElementById("upass").value;
+            var emailVal = document.getElementById("uemail").value;
+            var dobVal = document.getElementById("udob").value;
+            var cityVal = document.getElementById("ucity").value;
+            localStorage.setItem("storedName", nameVal);
+            localStorage.setItem("storedEmail", emailVal);
+            localStorage.setItem("storedDob", dobVal);
+            localStorage.setItem("storedCity", cityVal);
+            showUserCard(nameVal, emailVal, dobVal, cityVal);
+        });
+        const showUserCard = (n, e, d, c) => {
+            document.getElementById("outName").innerText = n;
+            document.getElementById("outEmail").innerText = e;
+            document.getElementById("outDob").innerText = d;
+            document.getElementById("outCity").innerText = c;
+            document.getElementById("resultCard").style.display = "block";
+        };
+        window.addEventListener("load", () => {
+            var n = localStorage.getItem("storedName");
+            var e = localStorage.getItem("storedEmail");
+            var d = localStorage.getItem("storedDob");
+            var c = localStorage.getItem("storedCity");
+            
+            if(n && e) {
+                showUserCard(n, e, d, c);
+            }
+        });
     </script>
 
 </body>
